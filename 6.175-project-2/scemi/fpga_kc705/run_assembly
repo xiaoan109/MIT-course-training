@@ -1,0 +1,4 @@
+#!/bin/bash
+
+runtb ./tb ../../programs/build/*.asm.vmh
+

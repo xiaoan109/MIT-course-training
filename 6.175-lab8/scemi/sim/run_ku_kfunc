@@ -1,0 +1,8 @@
+#!/bin/bash
+
+pkill bluetcl
+
+./excproc_dut > /dev/null &
+sleep 5
+./tb ../../programs/build/kfunc.ku_bench.vmh
+

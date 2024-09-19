@@ -1,0 +1,4 @@
+#!/bin/bash
+
+runtb ./tb `find ../../programs/build -name "*.bench.vmh" | grep -v mandelbrot | sort`
+

@@ -1,0 +1,67 @@
+[DEFAULT]
+default-targets:     all
+bsc-compile-options: -aggressive-conditions -keep-fires
+bsc-link-options:    -Xc++ -O0 -keep-fires
+
+[common]
+hide-target
+top-module:             mkBridge
+top-file:               ../Bridge.bsv
+bsv-source-directories: ../../scemi ../../src ../../src/includes %/board_support/bluenoc/bridges
+verilog-directory:      vlog_dut
+binary-directory:       bdir_dut
+simulation-directory:   simdir_dut
+info-directory:         info_dut
+altera-directory:       quartus
+xilinx-directory:       xilinx
+scemi-parameters-file:  scemi.params
+
+[dut]
+hide-target
+extends-target: common
+
+[bsim_dut]
+hide-target
+extends-target:             dut
+build-for:                  bluesim
+scemi-type:                 TCP
+scemi-tcp-port:             3375
+exe-file:                   bsim_dut
+create-workstation-project: true
+post-targets:               tb
+
+[onecycle]
+extends-target:           bsim_dut
+bsv-define:               PROC_FILE=OneCycle
+workstation-project-file: onecycle.bspec
+
+[twocycle]
+extends-target:           bsim_dut
+bsv-define:               PROC_FILE=TwoCycle
+workstation-project-file: twocycle.bspec
+
+[fourcycle]
+extends-target:           bsim_dut
+bsv-define:               PROC_FILE=FourCycle
+workstation-project-file: fourcycle.bspec
+
+[twostage]
+extends-target:           bsim_dut
+bsv-define:               PROC_FILE=TwoStage
+workstation-project-file: twostage.bspec
+
+[twostagebtb]
+extends-target:           bsim_dut
+bsv-define:               PROC_FILE=TwoStageBTB
+workstation-project-file: twostagebtb.bspec
+
+[tb]
+extends-target:       common
+scemi-tb
+build-for:            c++
+c++-header-directory: tbinclude
+c++-header-aliases
+c++-files:            ../Tb.cpp ../ResetXactor.cpp
+c++-options:          -O0
+exe-file:             tb
+

@@ -1,0 +1,8 @@
+*.log
+*.so
+*_dut
+debug.txt
+tb
+tbinclude
+scemi.params
+xilinx

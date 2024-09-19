@@ -1,0 +1,6 @@
+#!/bin/bash
+
+vivado build -v kc705_dut
+build -v tb
+programfpga
+
