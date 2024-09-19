@@ -1,0 +1,13 @@
+Write your answers to these questions in the text file discussion.txt provided with the initial lab code.
+
+1.How many gates does your one-bit multiplexer use? The 5-bit multiplexer? Write down a formula for the number of gates in an N-bit multiplexer. (2 Points)
+one-bit: 4 gates
+5-bit: 20 gates
+N-bit: 4N gates
+2.Assume a single full adder requires 5 gates. How many gates does the 8-bit ripple-carry adder require? How many gates does the 8-bit carry-select adder require? (2 Points)
+ripple-carry: 40 gates
+carry-select: 80 gates (3*5*4 + 5*4, adder + mux)
+3.Assume a single full adder requires A time unit to compute its outputs once all its inputs are valid and a mux requires M time unit to compute its output. In terms of A and M, how long does the 8-bit ripple-carry adder take? How long does the 8-bit carry-select adder take? (2 Points)
+ripple-carry: 8A
+carry-select: 4A + M
+4.Optional: How long did you take to work on this lab?
