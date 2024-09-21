@@ -1,19 +1,53 @@
-1.
+1.Hardware-wise, unsigned addition is the same as signed addition when using two's complement encoding. Using evidence from the test bench, is unsigned multiplication the same as signed multiplication?
+[Not the same. Signed multiplication does not take the sign bit into computation.]
+2.In mkTBDumb excluding the line
 
-2.
+function Bit#(16) test_function( Bit#(8) a, Bit#(8) b ) = multiply_unsigned( a, b );
+and modifying the rest of the module to have
 
-3.
+(* synthesize *)
+module mkTbDumb();
+    Empty tb <- mkTbMulFunction(multiply_unsigned, multiply_unsigned, True);
+    return tb;
+endmodule
+will result in a compilation error. What is that error? How does the original code fix the compilation error? You could also fix the error by having two function definitions as shown below.
 
-4.
+(* synthesize *)
+module mkTbDumb();
+    function Bit#(16) test_function( Bit#(8) a, Bit#(8) b ) = multiply_unsigned( a, b );
+    function Bit#(16) ref_function( Bit#(8) a, Bit#(8) b ) = multiply_unsigned( a, b );
+    Empty tb <- mkTbMulFunction(test_function, ref_function, True);
+    return tb;
+endmodule
+Why is two function definitions not necessary? (i.e. why can the second operand to mkTbMulFunction have variables in its type?) Hint: Look at the types of the operands of mkTbMulFunction in TestBenchTemplates.bsv.
+[Because parsing a function w/o a specified bit width(eg. 8) in mkTbMulFunction does not give the numeric type n.]
+3. Is your implementation of multiply_by_adding a signed multiplier or an unsigned multiplier? (Note: if it does not match either multiply_signed or multiply_unsigned, it is wrong).
+[Both unsigned and signed multiplier are implemented but the signed one may be too complicated?]
+4.Fill in above table in discussion.txt. None of the Radix-4 Booth encodings should have more than one non-zero symbol in them.
 Current Bits | Previous Bit | Original Booth Encoding | Radix-4 Booth Encoding
 -------------+--------------+-------------------------+-----------------------
-    00       |      0       |                         |           
-    00       |      1       |                         |           
+    00       |      0       |           00            |         00
+    00       |      1       |           0+            |         0+
     01       |      0       |           +-            |         0+
-    01       |      1       |                         |           
-    10       |      0       |                         |           
-    10       |      1       |                         |           
-    11       |      0       |                         |           
-    11       |      1       |                         |           
+    01       |      1       |           +0            |         +0
+    10       |      0       |           -0            |         -0
+    10       |      1       |           -+            |         0-
+    11       |      0       |           0-            |         0-
+    11       |      1       |           00            |         00
 
-5.
+5.Now consider extending your Booth multiplier even further to a radix-8 Booth multiplier. This would be like doing 3 steps of the radix-2 Booth multiplier in a single step. Can all radix-8 Booth encodings be represented with only one non-zero symbol like the radix-4 Booth multiplier? Do you think it would still make sense to make a radix-8 Booth multiplier?
+[For example, take Current Bits = 3'b010, Previous Bit = 1'b1, then the Original Booth Encoding = +-+, so Radix-8 Booth Encoding = +0,
+which still can be represented with only one non-zero symbol.We need to select p + m_pos(m_neg) << 2, p + m_pos(m_neg) << 1 and p + m_pos(m_neg) and p,
+which is a real large circuit.May not a good idea.]
+
+
+
+
+
+
+
+
+
+
+
+
