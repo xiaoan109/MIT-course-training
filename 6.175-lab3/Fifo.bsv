@@ -32,16 +32,16 @@ module mkCFFifo( Fifo#(2, t) ) provisos (Bits#(t, tSz));
         return va[0];
     endmethod
 
-    method Action enq(t x);
+    method Action enq(t x) if(!vb[0]);
         db[0] <= x;
         vb[0] <= True;
     endmethod
 
-    method Action deq();
+    method Action deq() if(va[0]);
         va[0] <= False;
     endmethod
 
-    method t first;
+    method t first if(va[0]);
         return da[0];
     endmethod
 endmodule

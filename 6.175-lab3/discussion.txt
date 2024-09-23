@@ -1,0 +1,11 @@
+Discussion Questions 1 and 2:
+
+Assume you are given a black box module that performs a 10-stage algorithm. You can not look at its internal implementation, but you can test this module by giving it data and looking at the output of the module. You have been told that it is implemented as one of the structures covered in this lab, but you do not know which one.
+How can you tell whether the implementation of the module is a folded implementation or whether it is a pipeline implementation? (3 Points)
+Once you know the module has a pipeline structure, how can you tell if it is inelastic or if it is elastic? (2 Points)
+
+1.Giving some input and count when there is a output, if output is given after 1 cycle, then it is pipeline implementation, if after 10 cycles, then it is folded implementation. 
+(throughput is 1 or 10)
+
+2. Both inelastic and elastic pipeline implementations will have a latency of 3 cycles and a result, ideally, every cycle. 
+Bubbles in the input will be propogated to the output if the pipeline implementation is inelastic; if not, the implementation is elastic.

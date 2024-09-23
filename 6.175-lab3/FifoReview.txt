@@ -1,0 +1,7 @@
+1.Conflict Fifo：直接由寄存器组成，因此不可以同时enq和deq，本质上是只有一个标志位不足以保证两个操作
+2.Pipeline Fifo：标志位由Ehr组成，Fifo作用是在空的时候只能enq，在满的时候可以deq或者同时enq和deq，同时enq和deq会把新的x写入并保持valid有效
+3.Bypass Fifo：标志位和数据位都由Ehr组成，Fifo作用是在满的时候只能deq，在空的时候可以enq或者同时enq和deq，同时enq和deq会把新的x直接传到输出，保持valid无效
+4.Conflict Free Fifo：如果是2-element，这样在非空非满即只有一个数据有效的时候就可以同时enq和deq了。
+
+Q1：为什么Bypass相比于Pipeline需要两个位宽的Ehr?
+A：因为Bypass需要实现直通的功能，因此数据寄存器也需要能够优先级读取？但是Pipeline无论如何都是读取寄存的值，因此不需要Ehr实现数据寄存器，用Reg即可
