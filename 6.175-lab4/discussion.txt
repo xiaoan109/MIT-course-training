@@ -2,23 +2,23 @@
     methods of mkMyConflictFifo?
 
 notEmpty
-    read:
+    read: empty
     written:
 first
-    read:
+    read: empty, data, deqP
     written:
 deq
-    read:
-    written:
+    read: empty, deqP, enqP
+    written: full, empty, deqP
 notFull
-    read:
+    read: full
     written:
 enq
-    read:
-    written:
+    read: full, enqP, deqP
+    written: data, empty, full, enqP
 clear
     read:
-    written:
+    written: enqP, deqP, empty, full
 
 
 
@@ -26,28 +26,35 @@ clear
 
            notEmpty   first   deq   notFull   enq   clear
          +----------+-------+-----+---------+-----+-------+
-notEmpty |          |       |     |         |     |       |
+notEmpty |    CF    |  CF   |  <  |   CF    |  <  |   <   |
          +----------+-------+-----+---------+-----+-------+
-first    |          |       |     |         |     |       |
+first    |    CF    |  CF   |  <  |   CF    |  CF |   <   |
          +----------+-------+-----+---------+-----+-------+
-deq      |          |       |     |         |     |       |
+deq      |    >     |  >    |  C  |   >     |  C  |   C   |
          +----------+-------+-----+---------+-----+-------+
-notFull  |          |       |     |         |     |       |
+notFull  |    CF    |  CF   |  <  |   CF    |  <  |   <   |
          +----------+-------+-----+---------+-----+-------+
-enq      |          |       |     |         |     |       |
+enq      |    >     |  CF   |  C  |   >     |  C  |   C   |
          +----------+-------+-----+---------+-----+-------+
-clear    |          |       |     |         |     |       |
+clear    |    >     |   >   |  C  |   >     |  C  |   C   |
          +----------+-------+-----+---------+-----+-------+
 
-
+Q: first CF enq or first < enq ?
+A: I think read from data[deqP] and write into data[enqP] while deqP == enqP can not happen at the same cycle. 
+Because when the two ptr are the same, the CFIFO is either full or empty, so enq and first would not execute concurrently.
 
 3. Which conflicts from mkMyConflictFifo do not match the conflict-free FIFO
     scheduling constraints?
+
+enq C deq --> enq CF deq
+{enq, deq} C clear --> {enq, deq} < clear
 
 
 
 4. In your design of the clear method in mkMyCFFifo, how did you force the
     scheduling constraint {enq, deq} < clear?
 
+A simple way: if-else statement priority, clearReq be the first
+Another way: replace Reg enq, deq, full, empty with 2-width EhrReg, clear method call the index 1 port and other methods or rules call the index 0 port.
 
 

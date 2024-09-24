@@ -17,7 +17,8 @@ module mkTestCFFifo(Fifo#(n,t)) provisos(Bits#(t,tSz));
     // Built-in FIFO with slightly different scheduling annotations
     FIFOF#(t) ref_noncf_fifo <- mkSizedFIFOF(valueOf(n));
     Ehr#(3, Maybe#(t)) _enq <- mkEhr(tagged Invalid);
-    Ehr#(3, Maybe#(void)) _deq <- mkEhr(tagged Invalid);
+    // Ehr#(3, Maybe#(void)) _deq <- mkEhr(tagged Invalid); //Error: void type
+    Ehr#(3, Maybe#(Bool)) _deq <- mkEhr(tagged Invalid);
     Ehr#(2, t) _first <- mkEhr(?);
     Ehr#(2, Bool) _not_full <- mkEhr(True);
     Ehr#(2, Bool) _not_empty <- mkEhr(False);
@@ -61,7 +62,7 @@ module mkTestCFFifo(Fifo#(n,t)) provisos(Bits#(t,tSz));
     endmethod
 
     method Action deq if(_not_empty[1]);
-        _deq[0] <= tagged Valid;
+        _deq[0] <= tagged Valid False; //meaningless, to eliminate void type
     endmethod
 
     method t first if(_not_empty[1]);
