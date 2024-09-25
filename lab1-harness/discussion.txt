@@ -1,0 +1,18 @@
+1.Theoriotically, the unstatic FIRFilter and the static elaborated FIRFilter should compile the same hardware design. But a litter bit difference is found in the generated verilog file.
+As to the area and the critical-path(and WNS, TNS, MAX_FREQ etc.):
+the unstatic FIRFilter has a bigger area at 6963.082000 and the  static elaborated FIRFilter has 6871.578000 area.
+unstatic FIRFilter:
+  WNS: 7.622
+  AX_FREQ: 420.589
+static elaborated FIRFilter:
+  WNS: 7.729
+  MAX_FREQ: 440.288
+
+2.Definitely the for-loop will make the tap change easier.
+
+3.Just keep the same. But we only use the multiply answer when it is valid.
+
+4.MultiStage FIRFilter:
+  Chip area for top module '\mkFIRFilter': 51601.074000
+  WNS:7.622 (same as the unstatic one)
+  MAX_FREQ: 420.589 (same as the unstatic one)
