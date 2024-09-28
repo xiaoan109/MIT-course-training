@@ -43,6 +43,8 @@ Q: first CF enq or first < enq ?
 A: I think read from data[deqP] and write into data[enqP] while deqP == enqP can not happen at the same cycle. 
 Because when the two ptr are the same, the CFIFO is either full or empty, so enq and first would not execute concurrently.
 
+[first < enq]
+
 3. Which conflicts from mkMyConflictFifo do not match the conflict-free FIFO
     scheduling constraints?
 
