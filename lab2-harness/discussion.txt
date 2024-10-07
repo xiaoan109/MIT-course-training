@@ -1,0 +1,49 @@
+1.
+[synth_comb]:
+
+Chip area for top module '\mkFFT': 44191.378000
+
++--------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| Endpoint                 | Clock Group | Delay Type | Path Delay | Path Required | CPPR  | Slack | Freq(MHz) |
++--------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| fft_outputFIFO/_11137_:D | core_clock  | max        | 3.740f     | 9.961         | 0.000 | 6.221 | 264.626   |
+
+
+[synth_linear]:
+
+Chip area for top module '\mkFFT': 63983.906000
+
++--------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| Endpoint                 | Clock Group | Delay Type | Path Delay | Path Required | CPPR  | Slack | Freq(MHz) |
++--------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| _66998_:D                | core_clock  | max        | 3.168f     | 9.961         | 0.000 | 6.793 | 311.781   |
+
+[synth_circ]
+
+Chip area for top module '\mkFFT': 67637.416000
+
++--------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| Endpoint                 | Clock Group | Delay Type | Path Delay | Path Required | CPPR  | Slack | Freq(MHz) |
++--------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| fft_outputFIFO/_11263_:D | core_clock  | max        | 4.521f     | 9.961         | 0.000 | 5.440 | 219.292   |
+
+TODO: why circular FFT has the worst timing and biggest area?
+A: Maybe the different Bflys have different twiddle factors so the hardware circuits can not be the same.
+
+The Linear one has the highest throughput.
+
+2. Q: What do you have to do now to instantiate a 4 tap FIR Filter? A 256 tap FIR Filter? Will your FIR Filter behave correctly in those cases?
+A: Change the parameter tnp1 when instantiate the FIRFilter module.
+TODO: A ref pcm needed and then the changed FIRFilter can be verified.
+
+3. Modules polymorphic vs typedefs
+Advantage: We can instantiate the module with the parameters flexibly changed, by just changing the value parsed to it.
+Disadvantage: May not suitable for the situation that you want to globally give many modules in many files the same parameters.
+
+4.Now that your FFT can be fully separated from the AudioPipeline, it makes sense to test the
+FFT modules independently. Describe in detail (two or three paragraphs is appropriate) how
+you can test your FFT implementations independently from the rest of the AudioPipeline.
+Are your FFT implementations correct for both larger and smaller number of points than 8?
+Is it any easier to test the FFT implementations because they are polymorphic?
+A:Directly give the FFT module stimulus and check the output. 
+Testbench may have more than one testcases which verify different number of points.

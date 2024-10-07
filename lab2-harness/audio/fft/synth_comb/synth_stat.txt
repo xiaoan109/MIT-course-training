@@ -1,0 +1,215 @@
+
+17. Printing statistics.
+
+=== $paramod\FIFO2\width=512\guarded=1'1 ===
+
+   Number of wires:               6410
+   Number of wire bits:           7432
+   Number of public wires:         521
+   Number of public wire bits:    1543
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               5889
+     AND3_X1                         1
+     AOI211_X4                       1
+     AOI21_X1                        1
+     BUF_X1                       2570
+     BUF_X16                         2
+     BUF_X32                        57
+     BUF_X4                        154
+     BUF_X8                         15
+     DFF_X1                       1026
+     INV_X1                          2
+     INV_X32                         1
+     INV_X8                          1
+     MUX2_X1                       512
+     NAND2_X1                      514
+     NAND2_X4                        1
+     NAND3_X1                      452
+     NAND3_X2                       61
+     NOR2_X1                         1
+     NOR2_X4                         1
+     OAI211_X2                     512
+     OAI21_X1                        1
+     OAI21_X4                        2
+     OR4_X1                          1
+
+   Chip area for module '$paramod\FIFO2\width=512\guarded=1'1': 11001.760000
+
+=== mkFFT ===
+
+   Number of wires:              19112
+   Number of wire bits:          20134
+   Number of public wires:        1035
+   Number of public wire bits:    2057
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              18592
+     $paramod\FIFO2\width=512\guarded=1'1      2
+     AND2_X1                      1553
+     AND2_X2                       153
+     AND2_X4                       159
+     AND3_X1                       303
+     AND3_X2                        32
+     AND3_X4                        26
+     AND4_X1                        12
+     AND4_X2                         8
+     AND4_X4                         5
+     AOI211_X2                      34
+     AOI211_X4                      78
+     AOI21_X1                      757
+     AOI21_X2                       69
+     AOI21_X4                       16
+     AOI221_X1                       5
+     AOI221_X4                      17
+     AOI22_X1                       24
+     AOI22_X2                        2
+     AOI22_X4                        1
+     BUF_X1                       1027
+     BUF_X16                         4
+     BUF_X2                         26
+     BUF_X32                         1
+     BUF_X4                         95
+     BUF_X8                         17
+     CLKBUF_X2                       7
+     CLKBUF_X3                       3
+     INV_X1                       1997
+     INV_X2                        105
+     INV_X4                         44
+     INV_X8                          5
+     LOGIC0_X1                       1
+     MUX2_X1                        36
+     NAND2_X1                     2878
+     NAND2_X2                      122
+     NAND2_X4                       34
+     NAND3_X1                      313
+     NAND3_X2                       18
+     NAND3_X4                        8
+     NAND4_X1                       47
+     NAND4_X2                        4
+     NAND4_X4                        7
+     NOR2_X1                      1526
+     NOR2_X2                       126
+     NOR2_X4                        81
+     NOR3_X1                       263
+     NOR3_X2                        28
+     NOR3_X4                        35
+     NOR4_X1                        16
+     NOR4_X2                         2
+     NOR4_X4                         7
+     OAI211_X2                      93
+     OAI21_X1                      619
+     OAI21_X2                       55
+     OAI21_X4                        9
+     OAI221_X1                       7
+     OAI22_X1                        9
+     OAI22_X2                        1
+     OR2_X1                        489
+     OR2_X2                         42
+     OR2_X4                         30
+     OR3_X1                        190
+     OR3_X2                         10
+     OR3_X4                         19
+     OR4_X1                         11
+     OR4_X2                          2
+     OR4_X4                          4
+     XNOR2_X1                     2932
+     XNOR2_X2                      363
+     XOR2_X1                      1307
+     XOR2_X2                       261
+
+   Area for cell type $paramod\FIFO2\width=512\guarded=1'1 is unknown!
+
+   Chip area for module '\mkFFT': 22187.858000
+
+=== design hierarchy ===
+
+   mkFFT                             1
+     $paramod\FIFO2\width=512\guarded=1'1      2
+
+   Number of wires:              31932
+   Number of wire bits:          34998
+   Number of public wires:        2077
+   Number of public wire bits:    5143
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              30368
+     AND2_X1                      1553
+     AND2_X2                       153
+     AND2_X4                       159
+     AND3_X1                       305
+     AND3_X2                        32
+     AND3_X4                        26
+     AND4_X1                        12
+     AND4_X2                         8
+     AND4_X4                         5
+     AOI211_X2                      34
+     AOI211_X4                      80
+     AOI21_X1                      759
+     AOI21_X2                       69
+     AOI21_X4                       16
+     AOI221_X1                       5
+     AOI221_X4                      17
+     AOI22_X1                       24
+     AOI22_X2                        2
+     AOI22_X4                        1
+     BUF_X1                       6167
+     BUF_X16                         8
+     BUF_X2                         26
+     BUF_X32                       115
+     BUF_X4                        403
+     BUF_X8                         47
+     CLKBUF_X2                       7
+     CLKBUF_X3                       3
+     DFF_X1                       2052
+     INV_X1                       2001
+     INV_X2                        105
+     INV_X32                         2
+     INV_X4                         44
+     INV_X8                          7
+     LOGIC0_X1                       1
+     MUX2_X1                      1060
+     NAND2_X1                     3906
+     NAND2_X2                      122
+     NAND2_X4                       36
+     NAND3_X1                     1217
+     NAND3_X2                      140
+     NAND3_X4                        8
+     NAND4_X1                       47
+     NAND4_X2                        4
+     NAND4_X4                        7
+     NOR2_X1                      1528
+     NOR2_X2                       126
+     NOR2_X4                        83
+     NOR3_X1                       263
+     NOR3_X2                        28
+     NOR3_X4                        35
+     NOR4_X1                        16
+     NOR4_X2                         2
+     NOR4_X4                         7
+     OAI211_X2                    1117
+     OAI21_X1                      621
+     OAI21_X2                       55
+     OAI21_X4                       13
+     OAI221_X1                       7
+     OAI22_X1                        9
+     OAI22_X2                        1
+     OR2_X1                        489
+     OR2_X2                         42
+     OR2_X4                         30
+     OR3_X1                        190
+     OR3_X2                         10
+     OR3_X4                         19
+     OR4_X1                         13
+     OR4_X2                          2
+     OR4_X4                          4
+     XNOR2_X1                     2932
+     XNOR2_X2                      363
+     XOR2_X1                      1307
+     XOR2_X2                       261
+
+   Chip area for top module '\mkFFT': 44191.378000
+
