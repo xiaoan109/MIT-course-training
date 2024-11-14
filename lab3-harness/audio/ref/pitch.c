@@ -23,6 +23,10 @@ double coeffs[9] = {
     -0.0124, 0.0, -0.0133, 0.0, 0.8181, 0.0, -0.0133, 0.0, -0.0124
 };
 
+#define DEBUG_PRINT 10
+
+static int counter = 0;
+
 // Get the integer part from a double.
 // This is meant to correspond to fxptGetInt in bluespec.
 short getInt(double x)
@@ -87,6 +91,17 @@ void pitchadjust(complex double* in, complex double* out)
             out[bin] = cmplxmp(mag, outphases[bin]);
         }
     }
+    if(counter < DEBUG_PRINT) {
+        printf("\nVector#(8, ComplexMP#(16, 16, 16)) ti%d = newVector;\n", counter);
+        for(i = 0; i< N; i++) {
+            printf("ti%d[%d] = cmplxmp(%f, tophase(%f));\n", counter, i, cabs(in[i]), carg(in[i]));
+        }
+        printf("\nVector#(8, ComplexMP#(16, 16, 16)) to%d = newVector;\n", counter);
+        for(i = 0; i< N; i++) {
+            printf("to%d[%d] = cmplxmp(%f, tophase(%f));\n", counter, i, cabs(out[i]), carg(out[i]));
+        }
+    }
+    counter = counter + 1;
 }
 
 int main(int argc, char* argv[])
