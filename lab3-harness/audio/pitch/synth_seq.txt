@@ -1,0 +1,160 @@
+synth ../common/AudioPipeline.bsv mkAudioPipeline -p ../common:../fir:../fft -s /tmp/6375-lab3- -l multisize
+Synthesizing module mkAudioPipeline from file ../common/AudioPipeline.bsv
+Compiling Bluespec module
+Synthesizing circuit with std cell library = multisize, O1, target delay = 1 ps
+
+Gates: 262774
+Area: 313396.94 um^2
+Critical-path delay: 1583.50 ps (not including setup time of endpoint flip-flop)
+
+Critical path: fft_fft_counter[0] -> $techmapfft_fft_outputFIFO.$0data1_reg[511:0][127]
+               Gate/port   Fanout        Gate delay (ps)  Cumulative delay (ps) 
+               ---------   ------        ---------------  --------------------- 
+      fft_fft_counter[0]        1                    9.8                    9.8 
+                  BUF_X8        8                   17.8                   27.6 
+                  INV_X8        7                    7.0                   34.6 
+                NAND2_X4        7                   20.5                   55.1 
+                 BUF_X16       10                   21.8                   76.9 
+                 BUF_X16       10                   18.9                   95.8 
+                 BUF_X32       10                   16.4                  112.2 
+                 BUF_X32       10                   14.1                  126.3 
+                NAND2_X4        1                    6.9                  133.2 
+                NAND2_X4        3                   16.0                  149.2 
+                 NOR3_X2        4                   39.2                  188.4 
+                 AND2_X4        1                   22.8                  211.2 
+                  BUF_X8       10                   14.2                  225.4 
+                NAND3_X1        1                   13.9                  239.3 
+                XNOR2_X1        1                   26.2                  265.5 
+                NAND2_X2        1                   12.6                  278.1 
+                NAND2_X4       10                   16.8                  294.9 
+                NAND4_X2        5                   40.8                  335.7 
+                  INV_X8        5                   15.9                  351.6 
+                 NOR2_X2        2                    9.1                  360.7 
+                XNOR2_X2        5                   31.4                  392.1 
+                XNOR2_X1        4                   38.3                  430.4 
+                XNOR2_X2        2                   29.3                  459.7 
+                NAND3_X2        3                   18.5                  478.2 
+                NAND2_X1        1                   13.9                  492.1 
+                NAND2_X2        3                   12.8                  504.9 
+                NAND2_X2        2                    9.9                  514.8 
+                NAND2_X1        3                   13.7                  528.5 
+                NAND2_X1        2                   11.6                  540.1 
+                NAND2_X1        3                   14.4                  554.5 
+                NAND2_X1        1                   12.0                  566.5 
+                NAND2_X2        7                   15.9                  582.4 
+                NAND2_X1        1                   12.4                  594.8 
+                NAND2_X2        7                   15.9                  610.7 
+                NAND3_X1        2                   15.4                  626.1 
+                NAND4_X1        3                   27.7                  653.8 
+                NAND3_X1        3                   24.1                  677.9 
+                NAND2_X1        1                   18.7                  696.6 
+                NAND2_X4        6                   15.8                  712.4 
+                NAND2_X2        3                   13.6                  726.0 
+                 NOR2_X4        2                   10.8                  736.8 
+                NAND3_X2        2                   13.5                  750.3 
+                 NOR4_X1        2                   42.0                  792.3 
+                NAND2_X2        1                   10.7                  803.0 
+                NAND3_X2        4                   14.1                  817.1 
+                NAND2_X2        1                   11.8                  828.9 
+                NAND2_X4        3                    8.6                  837.5 
+                NAND2_X2        2                   12.0                  849.5 
+                NAND2_X4        3                    8.9                  858.4 
+                XNOR2_X2        3                   25.4                  883.8 
+                NAND4_X2        9                   38.8                  922.6 
+                  BUF_X8       10                   26.3                  948.9 
+                NAND3_X2        1                   10.8                  959.7 
+                NAND2_X4        4                    8.6                  968.3 
+                NAND2_X1        2                   14.0                  982.3 
+                 NOR2_X1        1                    7.9                  990.2 
+                NAND4_X2        1                   10.5                 1000.7 
+                 NOR4_X2        9                   47.9                 1048.6 
+                NAND4_X1        3                   35.6                 1084.2 
+                NAND2_X1        1                   15.0                 1099.2 
+                NAND2_X1        1                   18.0                 1117.2 
+                 NOR3_X2        1                    7.3                 1124.5 
+                NAND4_X1        1                   23.9                 1148.4 
+                NAND2_X2        3                   17.7                 1166.1 
+                  BUF_X8       10                   17.3                 1183.4 
+                  BUF_X8       10                   17.3                 1200.7 
+                NAND2_X1        2                   15.8                 1216.5 
+                XNOR2_X2        5                   32.2                 1248.7 
+                 NOR2_X1        1                   25.0                 1273.7 
+                 NOR2_X2        2                   10.1                 1283.8 
+                 NOR2_X2        1                   19.4                 1303.2 
+                 NOR3_X4        3                    7.9                 1311.1 
+                 NOR2_X1        1                   18.2                 1329.3 
+                 NOR4_X2        1                    7.5                 1336.8 
+                NAND2_X2        4                   16.7                 1353.5 
+                NAND4_X1        1                   20.0                 1373.5 
+                NAND4_X2        3                   16.4                 1389.9 
+                NAND2_X1        1                   13.3                 1403.2 
+                NAND2_X2        1                    7.9                 1411.1 
+                XNOR2_X1        3                   30.2                 1441.3 
+                XNOR2_X2        4                   32.8                 1474.1 
+                  INV_X2        3                   17.7                 1491.8 
+                 NOR2_X1        1                    5.7                 1497.5 
+                 NOR2_X1        1                   23.6                 1521.1 
+                NAND2_X4        2                    8.7                 1529.8 
+                NAND2_X1        2                   10.1                 1539.9 
+                NAND3_X1        1                   15.8                 1555.7 
+                NAND2_X2        3                   12.8                 1568.5 
+                NAND2_X1        1                    8.3                 1576.8 
+                NAND2_X1        1                    6.7                 1583.5 
+$techmapfft_fft_outputFIFO.$0data1_reg[511:0][127] 0 0.0                 1583.5 
+
+Area breakdown:
+               Gate type    Gates       Area/gate (um^2)       Area/type (um^2)
+               ---------    -----       ----------------       ----------------
+                 AND2_X1     4906                  1.064               5219.984
+                 AND2_X2      253                  1.330                336.490
+                 AND2_X4       98                  2.394                234.612
+                 AND3_X1      755                  1.330               1004.150
+                 AND3_X2       41                  1.596                 65.436
+                 AND3_X4       13                  2.926                 38.038
+                 AND4_X1      382                  1.596                609.672
+                 AND4_X2       25                  1.862                 46.550
+                 AND4_X4        9                  3.458                 31.122
+                  BUF_X1     8476                  0.798               6763.848
+                 BUF_X16       39                  6.650                259.350
+                  BUF_X2      195                  1.064                207.480
+                 BUF_X32       17                 13.034                221.578
+                  BUF_X4      480                  1.862                893.760
+                  BUF_X8      112                  3.458                387.296
+                  DFF_X1    17398                  4.522              78673.756
+                  INV_X1    14265                  0.532               7588.980
+                  INV_X2      305                  0.798                243.390
+                  INV_X4       70                  1.330                 93.100
+                  INV_X8       11                  2.394                 26.334
+                NAND2_X1   133022                  0.798             106151.556
+                NAND2_X2     3563                  1.330               4738.790
+                NAND2_X4      822                  2.394               1967.868
+                NAND3_X1    23940                  1.064              25472.160
+                NAND3_X2      575                  1.862               1070.650
+                NAND3_X4       63                  3.458                217.854
+                NAND4_X1     5346                  1.330               7110.180
+                NAND4_X2      302                  2.394                722.988
+                NAND4_X4       54                  4.788                258.552
+                 NOR2_X1    12229                  0.798               9758.742
+                 NOR2_X2      416                  1.330                553.280
+                 NOR2_X4      143                  2.394                342.342
+                 NOR3_X1     1347                  1.064               1433.208
+                 NOR3_X2      136                  1.862                253.232
+                 NOR3_X4       44                  3.724                163.856
+                 NOR4_X1      646                  1.330                859.180
+                 NOR4_X2       58                  2.394                138.852
+                 NOR4_X4       31                  4.788                148.428
+                  OR2_X1     5319                  1.064               5659.416
+                  OR2_X2      170                  1.330                226.100
+                  OR2_X4       35                  2.394                 83.790
+                  OR3_X1      280                  1.330                372.400
+                  OR3_X2        4                  1.596                  6.384
+                  OR3_X4        2                  2.926                  5.852
+                  OR4_X1       40                  1.596                 63.840
+                  OR4_X2        3                  1.862                  5.586
+                XNOR2_X1    18416                  1.596              29391.936
+                XNOR2_X2      523                  2.660               1391.180
+                 XOR2_X1     7293                  1.596              11639.628
+                 XOR2_X2      102                  2.394                244.188
+                   Total   262774                                    313396.944
+
+Synthesis complete
