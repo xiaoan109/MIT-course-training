@@ -1,6 +1,6 @@
 BSVBASEDIR=$(abspath ..)
 BASEDIR=$(abspath .)
-CONNECTALDIR=/mit/6.375/lab2019f/connectal
+CONNECTALDIR=/opt/connectal
 
 # Define HW->SW / SW->HW interfaces
 S2H_INTERFACES = MyDutRequest:MyDut.request
@@ -50,3 +50,22 @@ run_fpgaSW:
 	NOPROGRAM=1 $(BASEDIR)/vc707g2/bin/ubuntu.exe ${ARG1}
 	rm -f /tmplock/fpgalock
 
+
+# BSV synthesize and sim
+bscflags = -keep-fires -aggressive-conditions
+src = $(wildcard ../common/*.bsv) $(wildcard ../fft/*.bsv) $(wildcard ../fir/*.bsv) $(wildcard ../pitch/*.bsv)
+bsvdir = ../common:../fir:../fft:../pitch
+build_dir = bscdir
+synth_dir = /tmp/6375-lab4
+
+simAudioPipeline: $(src)
+	mkdir -p bscdir
+	bsc -u -sim -simdir $(build_dir) -bdir $(build_dir) -info-dir $(build_dir) $(bscflags) -p +:$(bsvdir) -g mkTestDriver ../common/TestDriver.bsv
+	bsc -e mkTestDriver -sim -o $@ -simdir $(build_dir) -bdir $(build_dir) -info-dir $(build_dir) $(bscflags)
+
+synthAudioPipeline: $(src)
+	mkdir -p $(synth_dir)
+	synth ../common/AudioPipeline.bsv mkAudioPipeline -p $(bsvdir) -s $(synth_dir) -l multisize
+
+clean:
+	rm -rf bscdir simAudioPipeline *.so
